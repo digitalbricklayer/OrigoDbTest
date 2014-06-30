@@ -7,16 +7,23 @@ namespace OrigoDbTest.Commands
     [Serializable]
     class AddDataSourceCommand : Command<DataSourceModel>
     {
-        private string newName;
+        private readonly string newName;
+        private readonly Guid newIdentity;
 
-        public AddDataSourceCommand(string dataSourceName)
+        public AddDataSourceCommand(string dataSourceName, Guid theIdentity)
         {
             this.newName = dataSourceName;
+            this.newIdentity = theIdentity;
         }
 
         public override void Execute(DataSourceModel theDataSourceModel)
         {
-            theDataSourceModel.AddDataSource(new DataSource{Name = this.newName});
+            var newDataSource = new DataSource
+            {
+                Name = this.newName, 
+                Id = newIdentity
+            };
+            theDataSourceModel.AddDataSource(newDataSource);
         }
     }
 }

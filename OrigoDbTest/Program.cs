@@ -16,7 +16,9 @@ namespace OrigoDbTest
             var theEngine = Engine.Create<DataSourceModel>(config);
 
             // Write some data
-            theEngine.Execute(new AddDataSourceCommand("Jack"));
+            var temperatureDataSourceId = Guid.NewGuid();
+            theEngine.Execute(new AddDataSourceCommand("Office temperature", temperatureDataSourceId));
+            theEngine.Execute(new AddDataSourceCommand("Office humidity", Guid.NewGuid()));
 
             theEngine.Close();
 
@@ -28,13 +30,12 @@ namespace OrigoDbTest
 
             Console.WriteLine("Found {0} data sources.", dataSourceCount);
 
-            const string dataSourceToFind = "Jack";
-            var dataSource = theEngine.Execute(new GetDataSourceByNameQuery(dataSourceToFind));
+            var dataSource = theEngine.Execute(new GetDataSourceByIdQuery(temperatureDataSourceId));
 
             if (dataSource != null)
                 Console.WriteLine("Found '{0}' data source.", dataSource.Name);
             else
-                Console.WriteLine("Unable to find '{0}'.", dataSourceToFind);
+                Console.WriteLine("Unable to find '{0}'.", temperatureDataSourceId);
 
             Console.WriteLine("Press [Enter] to quit.");
             Console.ReadLine();
