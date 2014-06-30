@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using OrigoDB.Core;
 
-namespace OrigoDbTest
+namespace OrigoDbTest.Models
 {
     [Serializable]
     class DataSourceModel : Model

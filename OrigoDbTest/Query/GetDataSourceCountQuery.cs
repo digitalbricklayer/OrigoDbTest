@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using OrigoDB.Core;
+using OrigoDbTest.Models;
 
-namespace OrigoDbTest
+namespace OrigoDbTest.Query
 {
     class GetDataSourceCountQuery : Query<DataSourceModel,int>
     {
