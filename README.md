@@ -1,4 +1,4 @@
 OrigoDbTest
 ===========
 
-Test project for learing the OrigoDB API.
+Test project for learning the OrigoDB API.
