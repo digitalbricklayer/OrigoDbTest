@@ -30,10 +30,11 @@ namespace OrigoDbTest
 
             Console.WriteLine("Found {0} data sources.", dataSourceCount);
 
-            var dataSource = theEngine.Execute(new GetDataSourceByIdQuery(temperatureDataSourceId));
+            var temperatureDataSourceQuery = new GetDataSourceByIdQuery(temperatureDataSourceId);
+            var officeTemperatureDataSource = theEngine.Execute(temperatureDataSourceQuery);
 
-            if (dataSource != null)
-                Console.WriteLine("Found '{0}' data source.", dataSource.Name);
+            if (officeTemperatureDataSource != null)
+                Console.WriteLine("Found '{0}' data source.", officeTemperatureDataSource.Name);
             else
                 Console.WriteLine("Unable to find '{0}'.", temperatureDataSourceId);
 
@@ -44,3 +45,4 @@ namespace OrigoDbTest
         }
     }
 }
+ 
