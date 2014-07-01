@@ -9,19 +9,14 @@ namespace OrigoDbTest.Models
     {
         public DataSourceModel()
         {
-            this.DataSources = new List<DataSource>();
+            this.DataSources = new Dictionary<Guid, DataSource>();
         }
 
-        public List<DataSource> DataSources { get; private set; }
-
-        public void AddDataSource(string theDataSourceName)
-        {
-            this.DataSources.Add(new DataSource{Name = theDataSourceName});
-        }
+        public Dictionary<Guid, DataSource> DataSources { get; private set; }
 
         public void AddDataSource(DataSource theDataSource)
         {
-            this.DataSources.Add(theDataSource);
+            this.DataSources.Add(theDataSource.Id, theDataSource);
         }
     }
 }

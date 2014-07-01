@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using OrigoDB.Core;
 using OrigoDbTest.Models;
 
@@ -9,14 +8,16 @@ namespace OrigoDbTest.Query
     {
         private readonly Guid identityToFind;
 
-        public GetDataSourceByIdQuery(Guid theIdentifier)
+        public GetDataSourceByIdQuery(Guid theIdentity)
         {
-            this.identityToFind = theIdentifier;
+            this.identityToFind = theIdentity;
         }
 
         public override DataSource Execute(DataSourceModel model)
         {
-            return model.DataSources.FirstOrDefault(sp => sp.Id == identityToFind);
+            if (!model.DataSources.ContainsKey(this.identityToFind))
+                return null;
+            return model.DataSources[this.identityToFind];
         }
     }
 }

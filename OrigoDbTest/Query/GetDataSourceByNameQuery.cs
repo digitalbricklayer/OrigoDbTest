@@ -15,7 +15,7 @@ namespace OrigoDbTest.Query
 
         public override DataSource Execute(DataSourceModel model)
         {
-            return model.DataSources.FirstOrDefault(ds => ds.Name == this.dataSourceName);
+            return model.DataSources.Values.FirstOrDefault(ds => ds.Name == this.dataSourceName);
         }
     }
 }
