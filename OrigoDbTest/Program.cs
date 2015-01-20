@@ -12,7 +12,8 @@ namespace OrigoDbTest
         static void Main(string[] args)
         {
             // Create a database
-            var config = EngineConfiguration.Create().ForIsolatedTest();
+            var config = EngineConfiguration.Create()
+                                            .ForIsolatedTest();
             var theEngine = Engine.Create<DataSourceModel>(config);
 
             // Write some data
